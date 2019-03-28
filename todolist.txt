@@ -19,6 +19,6 @@ Next meeting:
 - server technology
 - navigating through schoolmouv.fr
 - TP2
-- initial presentation form (Tasnim)
+- initial presentation form (Bachar)
 - sign-in form (Tasnim)
 - sign-up form
