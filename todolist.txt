@@ -1,6 +1,5 @@
 Tasnim
 
-
 Bachar
 - TPs(TP2, TP3)
 
@@ -12,3 +11,14 @@ Common Tasks
 - Fragments
 - Préférences
 - Content Provider
+
+Schedule
+========
+Next meeting:
+- at least 50% of CM
+- server technology
+- navigating through schoolmouv.fr
+- TP2
+- initial presentation form (Tasnim)
+- sign-in form (Tasnim)
+- sign-up form

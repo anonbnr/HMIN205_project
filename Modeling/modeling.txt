@@ -11,8 +11,6 @@ a. Questions :
   - Quels modèles pour l'interface de connexion ? (Bouton Vert/Rouge)
   - Quels données seront affichées/utilisées pour le mode offline ?
 
-
-
 b. Versions
 - Version initiale
   a. Settings menu :
@@ -31,7 +29,6 @@ b. Versions
 
 - Version avancée
 1. pre-presentation activity: Logo
-
 
 Inscription
 a. Questions
