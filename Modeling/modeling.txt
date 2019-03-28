@@ -1,0 +1,73 @@
+1 Presentation de l'application
+a. Questions
+- Quels formats à utiliser ? (vidéo, photos, texte, etc.)
+- Quels vues à utiliser ?
+- Quel services à utiliser ?
+- Quelles ressources sont attachées ?
+
+1.1 interface de connexion:
+a. Questions :
+  - Combien de modes de connexion ? (online/offline)
+  - Quels modèles pour l'interface de connexion ? (Bouton Vert/Rouge)
+  - Quels données seront affichées/utilisées pour le mode offline ?
+
+
+
+b. Versions
+- Version initiale
+  a. Settings menu :
+    - coin gauche supérieure
+    - help (aide)
+    - about (à propos)
+    - contact (contact)
+    - settings (paramètres)
+  b. mode de connexion :
+    - online (couleur verte)
+    - offline (couleure rouge)
+    - possibilité de changement selon la connexion internet :
+      1. online/offline : si il est connecté à l'internet (online by default)
+      2. offline : si il n'est pas connecté à l'internet
+- Version intermédiaire
+
+- Version avancée
+1. pre-presentation activity: Logo
+
+
+Inscription
+a. Questions
+
+b. Versions
+- Version initiale :
+  1. sign-in (connexion) : formulaire contenant les champs suivants :
+    - login (TextView + EditView)
+    - mot de passe (TextView + EditView)
+    - Parent/Eleve (Checkbox, by default Eleve)
+    - Valider (ButtonView)
+    - clickable text to sign-up if no account
+  2. sign-up (inscription) :
+- Version intermédiaire
+- Version avancée
+
+Connexion
+1. Questions
+
+2. Versions
+- Version initiale
+- Version intermédiaire
+- Version avancée
+
+Partie serveur
+1. Questions
+
+2. Versions
+- Version initiale
+- Version intermédiaire
+- Version avancée
+
+Partie Android
+1. Questions
+
+2. Versions
+- Version initiale
+- Version intermédiaire
+- Version avancée

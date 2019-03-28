@@ -1,0 +1,14 @@
+Tasnim
+
+
+Bachar
+- TPs(TP2, TP3)
+
+Common Tasks
+- Cours (BD, Services, Adapteurs, Capteurs)
+- Best Server side technology for Android application development
+- Navigate through schoolmouv.fr to get inspired about GUI
+- Material Design
+- Fragments
+- Préférences
+- Content Provider
