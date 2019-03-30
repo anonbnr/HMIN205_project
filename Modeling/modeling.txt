@@ -18,7 +18,9 @@ b. Versions
     - help (aide)
     - about (à propos)
     - contact (contact)
+    - tchat
     - settings (paramètres)
+  
   b. mode de connexion :
     - online (couleur verte)
     - offline (couleure rouge)
