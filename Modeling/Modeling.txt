@@ -1,0 +1,117 @@
+ER and class diagrams Models
+============================
+User
+  id (int, PRIMARY KEY)
+  name (VARCHAR(50))
+  surname (VARCHAR(50))
+  login (VARCHAR[5-10] and UNIQUE)
+  password (VARCHAR[20])
+  email (VARCHAR and UNIQUE, possibly NULL)
+    validation required if not NULL
+  dateSubscription (DateTime)
+Student: User
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding User id)
+  birthDate (DateTime.Date)
+  curriculum (a subclass of Curriculum and FOREIGN KEY referencing corresponding Curriculum id)
+  training (a subclass of BasicTraining and FOREIGN KEY referencing corresponding BasicTraining id)
+  paymentMethod (a subclass of PaymentMethod and FOREIGN KEY referencing corresponding PaymentMethod id)
+StudentHasCurriculum (database table but not a class)
+  id (int, PRIMARY KEY)
+  idStudent (int, FOREIGN KEY that references the id of the student)
+  idCurriculum (int, FOREIGN KEY that references the id of the curriculum)
+  (idStudent, idCurriculum) has to be unique
+Parent: User
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding User id)
+  parenthoodRole (enumeration of values {MOTHER, FATHER})
+  agregates Student as children in a dictionary <childLogin, curriculum>
+  emailVerified (BOOLEAN, 1 if verified, 0 otherwise)
+Professor: User
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding User id)
+  domaine (enumeration equivalent to "Matière" (e.g. Maths, Physics, etc.))
+  degree (enumeration equivalent to university degree (e.g. Licence, Masters, PhD))
+  agregates Course as courses
+ProfessorTeachesCourse (a database table, not a class)
+  id (int, PRIMARY KEY)
+  idProfessor (FOREIGN KEY that references the id of the Professor)
+  idICC (FOREIGN KEY that references the id of the CurriculumHasCourse entry)
+  (idProfessor, idICC) has to be unique
+Curriculum
+  id (int, PRIMARY KEY)
+  title (VARCHAR(50))
+  schoolYear (DateTime.Year)
+  level (enumeration of levels)
+  agregates Course as modules
+Course
+  id (int, PRIMARY KEY)
+  code (VARCHAR(50))
+  title (VARCHAR(50))
+  category (enumeration equivalent to "Matière" (e.g. Maths, Physics, etc.))
+  level (enumeration of levels equivalent to "Niveau" (e.g. 6ème, 5ème, etc.))
+CurriculumHasCourse (a database table, not a class)
+  id (int, PRIMARY KEY) (also named as ICC or idCurriculumCourse)
+  idCurriculum (int, FOREIGN KEY that references the id of the curriculum)
+  idCourse (int, FOREIGN KEY that references the id of the course)
+  (idCurriculum, idCourse) has to be unique
+BasicTraining
+  id(int PRIMARY KEY)
+PremiumTraining
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding BasicTraining id)
+PaymentMethod
+  id (int, PRIMARY KEY)
+  payment() (abstract method)
+Payment (database table but not a class)
+  id (int, PRIMARY KEY)
+  idStudent (FOREIGN KEY that references the id of the student)
+  idPayment (FOREIGN KEY that references the id of the paymentMethod)
+  datePayment (DateTime.Now)
+  Fees (REAL)
+  (idStudent, datePayment) has to be unique
+Receipt (class but not a database table)
+  to be generated upon payment confirmation
+  reference (VARCHAR(10), UNIQUE)
+    to be generated
+  studentName (VARCHAR(50))
+  studentSurname (VARCHAR(50))
+  fees (REAL)
+  curriculumTitle (VARCHAR(50))
+  curriculumYear (DateTime.Year)
+  curriculumLevel (enumeration of levels)
+  array of courses associated to the curriculum
+BankCard: PaymentMethod
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding PaymentMethod id)
+  cardHolderName (VARCHAR(50))
+  cardHolderSurname (VARCHAR(50))
+  cardNumber (INT)
+    verify the number of digits
+  expiryDateMonth (DateTime.Month)
+  expiryDateYear (DateTime.Year)
+  securityNumber (INT)
+    verify the number of digits as being 3
+  payment() (implementation of the abstract method)
+BankTransfer: PaymentMethod
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding PaymentMethod id)
+  accountHolderName (VARCHAR(50))
+  accountHolderSurname (VARCHAR(50))
+  RIBNumber (INT)
+    verify the number of digits
+  payment() (implementation of the abstract method)
+Chat (http://www.chat21.org/)
+TrainingUnit (abstract class)
+  id (int, PRIMARY KEY)
+  path (VARCHAR(200))
+  format (VARCHAR(10))
+    validation (".*")
+  name (VARCHAR(50))
+RealTime
+NotRealTime
+  id (int, PRIMARY KEY and FOREIGN KEY referencing corresponding TrainingUnit id)
+  isComplete (bool)
+  status (real, [0;1])
+  computeStatus() (abstract method)
+CourseMaterial (abstract class)
+Exercise (abstract class)
+Video
+Document
+Presentation
+MCQ
+QandA
