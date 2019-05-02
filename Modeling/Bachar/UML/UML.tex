@@ -1,0 +1,85 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[francais]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{listingsutf8} %inline code snippets
+\usepackage[colorlinks,urlcolor=blue]{hyperref} %hyperlinks
+\usepackage{xcolor} %color text
+\usepackage{packages/tikz-uml} %UML elements
+\usetikzlibrary{positioning}
+
+\title{Android Project Class Diagram}
+\author{Bachar Rima}
+\date{avril 2019}
+
+\begin{document}
+\pagestyle{plain}
+
+\maketitle
+
+\begin{figure}[!ht]
+  \centering
+  \resizebox{1.2\textwidth}{!}{
+    \begin{tikzpicture}
+      %%CLASSES
+      \umlsimpleclass[type=abstract]{User}
+      \umlsimpleclass[below=2cm of User, type=abstract]{Client}
+      \umlsimpleclass[below right=1cm of Client]{Parent}
+      \umlsimpleclass[below left=2cm of Client]{Student}
+      \umlsimpleclass[right=4cm of Client, type=abstract]{PaymentMethod}
+      \umlsimpleclass[below right=1cm of PaymentMethod]{BankCard}
+      \umlsimpleclass[left=1cm of BankCard]{BankTransfer}
+      \umlsimpleclass[above=2cm of PaymentMethod]{Payment}
+      \umlsimpleclass[above left=1cm of Student]{Course}
+      \umlsimpleclass[left=8cm of User]{Price}
+      \umlsimpleclass[left=4cm of Course, type=abstract]{Unit}
+      \umlsimpleclass[below=1cm of Unit, type=abstract]{StaticUnit}
+      \umlsimpleclass[below left=1cm of StaticUnit, type=abstract]{RawUnit}
+      \umlsimpleclass[right=1cm of RawUnit, type=abstract]{MappedUnit}
+      \umlsimpleclass[below right=1cm of MappedUnit]{Exercise}
+      \umlsimpleclass[left=1cm of Exercise]{Document}
+      \umlsimpleclass[below=1cm of Document]{Presentation}
+      \umlsimpleclass[below=1cm of RawUnit]{Video}
+
+      %%ASSOCIATIONS
+      \umlHVHuniaggreg[anchor2=20, stereo=Has]{Parent}{Student}
+      \umlunicompo[stereo=Pays]{PaymentMethod}{Payment}
+      \umlunicompo[stereo=Uses]{Client}{PaymentMethod}
+      \umlVHuniassoc[name=notification]{Parent}{Student}
+      \umlassocclass[below right=0.2cm of Parent]{Notification}{notification-1}{}{}
+      \umlVHassoc[anchors = north and east, name=subscription]{Student}{Course}
+      \umlassocclass[below left=0.85cm of User]{Subscription}{subscription-1}{}{}
+      \umlHVassoc[anchors = west and south, name=recommendation]{Student}{Course}
+      \umlassocclass[below right=1cm of Student, geometry=-|]{Recommendation}{recommendation-1}{}{}
+      \umlVHassoc[name=costs]{Course}{Price}
+      \umlassocclass[left=2cm of User, geometry=-|-]{Costs}{costs-1}{}{}
+      \umlunicompo[name=contains]{Course}{Unit}
+      \umlassocclass[above=2cm of Unit]{Contains}{contains-1}{}{}
+      \umlassoc[anchors = 195 and east, name=consults]{Student}{StaticUnit}
+      \umlassocclass[below=3cm of Student, geometry=|-|]{Consults}{consults-1}{}{}
+      \umlsimpleclass[below left=2cm of Consults]{ConsultsDocument}
+      \umlsimpleclass[below=2cm of Consults]{ConsultsExercise}
+      \umlsimpleclass[below right=2cm of Consults]{ConsultsVideo}
+
+      %%INHERITANCE
+      \umlinherit{Client}{User}
+      \umlVHVinherit{Parent}{Client}
+      \umlVHVinherit[anchor1=60]{Student}{Client}
+      \umlVHVinherit{BankCard}{PaymentMethod}
+      \umlVHVinherit{BankTransfer}{PaymentMethod}
+      \umlinherit{StaticUnit}{Unit}
+      \umlVHVinherit{RawUnit}{Unit}
+      \umlVHVinherit{MappedUnit}{Unit}
+      \umlinherit{Video}{RawUnit}
+      \umlVHVinherit{Document}{MappedUnit}
+      \umlinherit{Presentation}{Document}
+      \umlVHVinherit{Exercise}{MappedUnit}
+      \umlVHVinherit{ConsultsDocument}{Consults}
+      \umlVHVinherit{ConsultsExercise}{Consults}
+      \umlVHVinherit{ConsultsVideo}{Consults}
+    \end{tikzpicture}
+  }
+\end{figure}
+
+\end{document}
